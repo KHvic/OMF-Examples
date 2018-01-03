@@ -1,0 +1,18 @@
+package Type;
+
+public class DynamicType {
+
+	public String Time;
+	public double Value;
+
+	public static final String JSONSCHEMA =  
+			"[{\"id\": \"DynamicType\",\"type\": \"object\",\"classification\": \"dynamic\","
+			+ "\"properties\": {\"Time\": { \"type\": \"string\", \"format\": \"date-time\", \"isindex\": true },"
+			+ "\"Value\": { \"type\": \"number\", \"format\": \"float64\" }}}]";
+	
+	public DynamicType(String t, double v) {
+		Time = t;
+		Value = v;
+	}
+
+}

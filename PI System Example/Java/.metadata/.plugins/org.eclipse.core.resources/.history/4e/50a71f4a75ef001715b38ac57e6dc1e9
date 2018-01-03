@@ -1,0 +1,11 @@
+import sun.net.www.http.HttpClient;
+
+public class IngressClient {
+	public static final String OMFVERSION = "1.0";
+	private String producerToken;
+	private HttpClient client;
+	
+	public IngressClient() {
+		HttpClient = new HttpClient;
+	}
+}

@@ -1,0 +1,37 @@
+
+public class DynamicType {
+
+	public String Id;
+	public String Name;
+	public String Model;
+	public static final String JSONSCHEMA =  
+			"[{\"id\": \"StaticType\",\"type\": \"object\",\"classification\": \"static\", "
+			+ "\"properties\": {\"Id\": { \"type\": \"string\", \"isindex\": true },"
+			+ "\"Name\": { \"type\": \"string\", \"isname\": true},"
+			+ "\"Model\": { \"type\": \"string\"}} }]";
+	
+	public DynamicType(String Id, String Name, String Model) {
+		this.Id = Id;
+		this.Name = Name;
+		this.Model = Model;
+	}
+	public String getId() {
+		return Id;
+	}
+	public void setId(String id) {
+		Id = id;
+	}
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
+	public String getModel() {
+		return Model;
+	}
+	public void setModel(String model) {
+		Model = model;
+	}
+	
+}

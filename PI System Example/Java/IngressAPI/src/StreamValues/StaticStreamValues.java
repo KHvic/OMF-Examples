@@ -1,0 +1,13 @@
+package StreamValues;
+
+import java.util.List;
+
+public class StaticStreamValues {
+	public String TypeId;
+	public List<Object> values;
+	
+	public StaticStreamValues(String t, List<Object> val) {
+		TypeId = t;
+		values = val;
+	}
+}

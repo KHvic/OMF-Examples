@@ -1,0 +1,22 @@
+
+public class SourceTarget {
+	public String typeid;
+	public String index;
+	
+	public SourceTarget(String id, String i) {
+		typeid = id;
+		index = i;
+	}
+	public String getTypeid() {
+		return typeid;
+	}
+	public void setTypeid(String typeid) {
+		this.typeid = typeid;
+	}
+	public String getIndex() {
+		return index;
+	}
+	public void setIndex(String index) {
+		this.index = index;
+	}
+}

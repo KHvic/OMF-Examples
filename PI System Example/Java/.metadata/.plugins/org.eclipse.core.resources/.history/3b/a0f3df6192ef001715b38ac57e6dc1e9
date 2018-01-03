@@ -1,0 +1,24 @@
+import java.util.List;
+
+public class StaticStreamValues {
+	public String TypeId;
+	public List<Object> values;
+	
+	public StaticStreamValues(String t, List<Object> val) {
+		TypeId = t;
+		values = val;
+	}
+	public String getTypeId() {
+		return TypeId;
+	}
+	public void setTypeId(String typeId) {
+		TypeId = typeId;
+	}
+	public Iterable<Object> getValues() {
+		return values;
+	}
+	public void setValues(List<Object> values) {
+		this.values = values;
+	}
+	
+}

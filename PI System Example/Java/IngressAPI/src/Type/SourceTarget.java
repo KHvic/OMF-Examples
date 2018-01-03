@@ -1,0 +1,12 @@
+package Type;
+
+public class SourceTarget {
+	public String typeid;
+	public String index;
+	
+	public SourceTarget(String id, String i) {
+		typeid = id;
+		index = i;
+	}
+
+}

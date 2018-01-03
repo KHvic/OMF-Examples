@@ -1,0 +1,32 @@
+
+public class StaticType {
+
+	public String Id;
+	public String Name;
+	public String Model;
+	public static String JsonSchema =  
+			"{\"id\": \"StaticType\",\"type\": \"object\",+\"classification\": \"static\", "
+			+ "\"properties\": {\"Id\": { \"type\": \"string\", \"isindex\": true },"
+			+ "\"Name\": { \"type\": \"string\", \"isname\": true},"
+			+ "\"Model\": { \"type\": \"string\"}} }";
+	
+	public String getId() {
+		return Id;
+	}
+	public void setId(String id) {
+		Id = id;
+	}
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
+	public String getModel() {
+		return Model;
+	}
+	public void setModel(String model) {
+		Model = model;
+	}
+	
+}

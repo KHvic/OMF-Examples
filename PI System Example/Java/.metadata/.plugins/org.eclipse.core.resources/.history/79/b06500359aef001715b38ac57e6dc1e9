@@ -1,0 +1,28 @@
+
+public class Container {
+	public String Id;
+	public String TypeId;
+	
+	public Container(String id, String type) {
+		Id = id;
+		TypeId = type;
+	}
+
+	public String getId() {
+		return Id;
+	}
+
+	public void setId(String id) {
+		Id = id;
+	}
+
+	public String getTypeId() {
+		return TypeId;
+	}
+
+	public void setTypeId(String typeId) {
+		TypeId = typeId;
+	}
+	
+	
+}

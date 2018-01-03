@@ -1,0 +1,23 @@
+
+public class LinkType {
+	public SourceTarget Source;
+	public SourceTarget Target;
+	
+	public LinkType(SourceTarget s, SourceTarget t) {
+		Source = s;
+		Target = t;
+	}
+	public SourceTarget getSource() {
+		return Source;
+	}
+	public void setSource(SourceTarget source) {
+		Source = source;
+	}
+	public SourceTarget getTarget() {
+		return Target;
+	}
+	public void setTarget(SourceTarget target) {
+		Target = target;
+	}
+	
+}

@@ -1,0 +1,19 @@
+import java.util.Date;
+
+public class DynamicType {
+
+	public Date Time;
+	public double Value;
+
+	public static final String JSONSCHEMA =  
+			"[{\"id\": \"DynamicType\",\"type\": \"object\","
+			+ "\"classification\": \"dynamic\","
+			+ "\"properties\": {\"Time\": { \"type\": \"string\", \"format\": \"date-time\", \"isindex\": true },"
+			+ "\"Value\": { \"type\": \"number\", \"format\": \"float64\" }}}]";
+	
+	public DynamicType(Date t, double v) {
+		Time = t;
+		Value = v;
+	}
+
+}

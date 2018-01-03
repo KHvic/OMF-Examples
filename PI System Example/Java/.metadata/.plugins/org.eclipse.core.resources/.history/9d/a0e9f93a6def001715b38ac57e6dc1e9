@@ -1,0 +1,18 @@
+
+public class StaticStreamValues {
+	public String TypeId;
+	public Iterable<Object> values;
+	public String getTypeId() {
+		return TypeId;
+	}
+	public void setTypeId(String typeId) {
+		TypeId = typeId;
+	}
+	public Iterable<Object> getValues() {
+		return values;
+	}
+	public void setValues(Iterable<Object> values) {
+		this.values = values;
+	}
+	
+}
