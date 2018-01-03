@@ -1,0 +1,9 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\kgoh\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\kgoh\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback"
+    ]
+  }
+}

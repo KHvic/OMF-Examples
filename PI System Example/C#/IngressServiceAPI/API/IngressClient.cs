@@ -39,7 +39,7 @@ namespace IngressServiceAPI.API
         {
             string json = string.Format("[{0}]", string.Join(",", types));
             var bytes = Encoding.UTF8.GetBytes(json);
-            SendMessageAsync(bytes, MessageType.Type, MessageAction.Create);
+            SendMessageAsync(bytes, MessageType.Type, MessageAction.Create).Wait();
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace IngressServiceAPI.API
         /// <param name="streams"></param>
         public void CreateContainers(IEnumerable<ContainerInfo> streams)
         {
-            string json = JsonConvert.SerializeObject(streams);
+            string json = JsonConvert.SerializeObject(streams);Console.Write(json);
             var bytes = Encoding.UTF8.GetBytes(json);
             SendMessageAsync(bytes, MessageType.Container, MessageAction.Create).Wait();
         }
@@ -62,7 +62,6 @@ namespace IngressServiceAPI.API
         public Task SendValuesAsync(IEnumerable<DynamicStreamValues> values)
         {
             string json = JsonConvert.SerializeObject(values);
-            //Console.Write(json + "\n");
             var bytes = Encoding.UTF8.GetBytes(json);
             return SendMessageAsync(bytes, MessageType.Data, MessageAction.Create);
         }

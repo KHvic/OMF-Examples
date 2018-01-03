@@ -25,3 +25,12 @@ C:\Users\kgoh\Desktop\IngressServiceAPI - Copy\obj\Debug\IngressServiceAPI.cspro
 C:\Users\kgoh\Desktop\IngressServiceAPI - Copy\obj\Debug\IngressServiceAPI.csproj.CoreCompileInputs.cache
 C:\Users\kgoh\Desktop\IngressServiceAPI - Copy\obj\Debug\IngressServiceAPI.exe
 C:\Users\kgoh\Desktop\IngressServiceAPI - Copy\obj\Debug\IngressServiceAPI.pdb
+C:\Users\kgoh\Desktop\OMF Samples\PI System Example\C#\IngressServiceAPI\bin\Debug\IngressServiceAPI.exe.config
+C:\Users\kgoh\Desktop\OMF Samples\PI System Example\C#\IngressServiceAPI\bin\Debug\IngressServiceAPI.exe
+C:\Users\kgoh\Desktop\OMF Samples\PI System Example\C#\IngressServiceAPI\bin\Debug\IngressServiceAPI.pdb
+C:\Users\kgoh\Desktop\OMF Samples\PI System Example\C#\IngressServiceAPI\bin\Debug\Newtonsoft.Json.dll
+C:\Users\kgoh\Desktop\OMF Samples\PI System Example\C#\IngressServiceAPI\bin\Debug\Newtonsoft.Json.xml
+C:\Users\kgoh\Desktop\OMF Samples\PI System Example\C#\IngressServiceAPI\obj\Debug\IngressServiceAPI.csprojResolveAssemblyReference.cache
+C:\Users\kgoh\Desktop\OMF Samples\PI System Example\C#\IngressServiceAPI\obj\Debug\IngressServiceAPI.csproj.CoreCompileInputs.cache
+C:\Users\kgoh\Desktop\OMF Samples\PI System Example\C#\IngressServiceAPI\obj\Debug\IngressServiceAPI.exe
+C:\Users\kgoh\Desktop\OMF Samples\PI System Example\C#\IngressServiceAPI\obj\Debug\IngressServiceAPI.pdb

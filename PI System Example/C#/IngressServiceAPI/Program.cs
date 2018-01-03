@@ -27,14 +27,14 @@ namespace IngressServiceAPI
             // Dynamic Type: Changes frequently (Temperature/Oil Level)
             // Static Type: Do not change frequently (Name)
 
-            // 1) Send the Types message - SimpleType is a dynamic type
+            // 1) Send the Types message - DynamicType is a dynamic type
             client.CreateTypes(new string[] { DynamicType.JsonSchema });
 
             // 2) Send the Containers message - Container for dynamic type
-            ContainerInfo stream1 = new ContainerInfo() { Id = "TestStream1", TypeId = "SimpleType" };
-            ContainerInfo stream2 = new ContainerInfo() { Id = "TestStream2", TypeId = "SimpleType" };
+            ContainerInfo stream1 = new ContainerInfo() { Id = "TestStream1", TypeId = "DynamicType" };
+            ContainerInfo stream2 = new ContainerInfo() { Id = "TestStream2", TypeId = "DynamicType" };
             
-            client.CreateContainers(new ContainerInfo[] { stream1, stream2/*, stream3*/ });
+            client.CreateContainers(new ContainerInfo[] { stream1, stream2});
 
             // Send the Types messages for static type
             client.CreateTypes(new string[] { StaticType.JsonSchema });

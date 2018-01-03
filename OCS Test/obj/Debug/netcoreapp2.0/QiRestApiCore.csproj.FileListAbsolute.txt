@@ -1,0 +1,11 @@
+C:\Users\kgoh\Desktop\Qi-Samples-master\Basic\DotNet\QiRestApiCore\bin\Debug\netcoreapp2.0\QiRestApiCore.deps.json
+C:\Users\kgoh\Desktop\Qi-Samples-master\Basic\DotNet\QiRestApiCore\bin\Debug\netcoreapp2.0\QiRestApiCore.runtimeconfig.json
+C:\Users\kgoh\Desktop\Qi-Samples-master\Basic\DotNet\QiRestApiCore\bin\Debug\netcoreapp2.0\QiRestApiCore.runtimeconfig.dev.json
+C:\Users\kgoh\Desktop\Qi-Samples-master\Basic\DotNet\QiRestApiCore\bin\Debug\netcoreapp2.0\QiRestApiCore.dll
+C:\Users\kgoh\Desktop\Qi-Samples-master\Basic\DotNet\QiRestApiCore\bin\Debug\netcoreapp2.0\QiRestApiCore.pdb
+C:\Users\kgoh\Desktop\Qi-Samples-master\Basic\DotNet\QiRestApiCore\obj\Debug\netcoreapp2.0\QiRestApiCore.csprojResolveAssemblyReference.cache
+C:\Users\kgoh\Desktop\Qi-Samples-master\Basic\DotNet\QiRestApiCore\obj\Debug\netcoreapp2.0\QiRestApiCore.csproj.CoreCompileInputs.cache
+C:\Users\kgoh\Desktop\Qi-Samples-master\Basic\DotNet\QiRestApiCore\obj\Debug\netcoreapp2.0\QiRestApiCore.AssemblyInfoInputs.cache
+C:\Users\kgoh\Desktop\Qi-Samples-master\Basic\DotNet\QiRestApiCore\obj\Debug\netcoreapp2.0\QiRestApiCore.AssemblyInfo.cs
+C:\Users\kgoh\Desktop\Qi-Samples-master\Basic\DotNet\QiRestApiCore\obj\Debug\netcoreapp2.0\QiRestApiCore.dll
+C:\Users\kgoh\Desktop\Qi-Samples-master\Basic\DotNet\QiRestApiCore\obj\Debug\netcoreapp2.0\QiRestApiCore.pdb
