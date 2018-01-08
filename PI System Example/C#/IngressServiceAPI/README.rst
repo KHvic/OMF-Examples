@@ -12,14 +12,14 @@ Currently, the API supports three operations:
 
 These operations are exposed via the ``IngressClient`` which is responsible for formatting the stream data into OMF messages, authenticating with the Ingress Service, and sending the data to the service endpoint.
 
-Creating Types
+Creating Dynamic Types
 --------------
-Types define the structure of the data that will be sent to the service.  We use `JSONSchema <http://json-schema.org/examples.html>`_ to describe types.  Types must be created and sent to the service before any streams associated with the type can be sent.  Here's an example of a type that contains an indexed date-time and a numeric value.  We give it an id of "SimpleType" which we then reference later on when creating streams.
+Types define the structure of the data that will be sent to the service.  We use `JSONSchema <http://json-schema.org/examples.html>`_ to describe types.  Types must be created and sent to the service before any streams associated with the type can be sent.  Here's an example of a type that contains an indexed date-time and a numeric value.  We give it an id of "DynamicType" which we then reference later on when creating streams.
 ::
 
     string typeSchema =
     @"{
-          ""id"": ""SimpleType"",
+          ""id"": ""DynamicType"",
           ""type"": ""object"",
 		  ""classification"": ""dynamic"",
           ""properties"": {
@@ -37,7 +37,7 @@ Containers define a group of typed and ordered data.  Conceptually,  you could t
 Containers are created by building a ``ContainerInfo`` object and passing it to the ``IngressClient``.  The ``ContainerInfo`` is a tuple that consist of a containerId and it's associated typeId.  The container Id can be any unique string that you want to use to identify your stream.
 ::
 
-    ContainerInfo stream1 = new ContainerInfo() { Id = "TestStream1", TypeId = "SimpleType" };
+    ContainerInfo stream1 = new ContainerInfo() { Id = "TestStream1", TypeId = "DynamicType" };
 
     ingressClient.CreateContainers(new ContainerInfo[] { stream1 });
 
@@ -48,23 +48,72 @@ Once your type and container have been created, you can now send values associat
 ::
 
     // Create a collection of values and add your data
-    var values = new List<SimpleType>();
-    values.Add(new SimpleType() { Time = t1, Value = 3.14 });
-    values.Add(new SimpleType() { Time = t2, Value = 6.67384 });
-    values.Add(new SimpleType() { Time = t3, Value = 299792458 });
+    var values = new List<StaticType>();
+    values.Add(new DynamicType() { Time = t1, Value = 3.14 });
+    values.Add(new DynamicType() { Time = t2, Value = 6.67384 });
+    values.Add(new DynamicType() { Time = t3, Value = 299792458 });
 
     // Package them into a StreamValues object
-    var vals1 = new StreamValues() { ContainerId = stream1.StreamId, Values = values };
+    var vals1 = new DynamicStreamValues() { ContainerId = stream1.StreamId, Values = values };
 
     // Send them to the service
     ingressClient.SendValuesAsync(new StreamValues[] { vals1 });
 
-Insuring High Throughput
+Static Types
+---------------
+Static type can be defined similarly as the Dynamic type, with the classification's value set to "static". As compared to dynamic types which are defined for values that changes constantly such as temperature and oil level (PI Point), static types are more suitable for creating elements in the PI System.
+::
+        public const string JsonSchema =
+            @"{""id"": ""StaticType"",""type"": ""object"",
+                ""classification"": ""static"",
+                ""properties"": {
+                    ""Id"": { ""type"": ""string"", ""isindex"": true },
+                    ""Name"": { ""type"": ""string"", ""isname"": true},
+                    ""Model"": { ""type"": ""string""}
+                }
+            }";
+	    
+	ingressClient.CreateTypes(new string[] { JsonSchema });
+	
+Creating Elements
+---------------
+Elements can be created similarly as the Dynamic types according to the following examples which create 3 elements with id of 1, 2, and 3.
+::
+
+         // Create couple of Static Type Data named Element
+         List<StaticType> list = new List<StaticType>();
+         for (int i = 1; i < 4; i++)
+              list.Add(new StaticType() { Id = i.ToString(), Name = "Element" + i, Model = "A" + i });
+
+         StaticStreamValues staticStream = new StaticStreamValues(){ TypeId = "StaticType",Values = list};
+
+Linking Elements
+---------------
+After elements have been created, they can be linked using the defined helper class 'LinkType', where the Source is the Parent element, and the Target is the child element. The index corresponds to the 'Id' of the created element.
+::
+            //  __Link Type to link static data
+            //  Source is the parent, Target is the child
+            //  Head element need to be linked to _ROOT
+            LinkType link1 = new LinkType()
+            { Source = new SourceTarget() { typeid = "StaticType", index = "_ROOT" },
+              Target = new SourceTarget() { typeid = "StaticType", index = "1"}
+            };
+            LinkType link2 = new LinkType()
+            {
+                Source = new SourceTarget() { typeid = "StaticType", index = "1" },
+                Target = new SourceTarget() { typeid = "StaticType", index = "2" }
+            };
+            LinkType link3 = new LinkType()
+            {
+                Source = new SourceTarget() { typeid = "StaticType", index = "2" },
+                Target = new SourceTarget() { typeid = "StaticType", index = "3" }
+            };
+            List<LinkType> list2 = new List<LinkType>{ link1, link2, link3 };
+
+            // Send the static data and link
+            StaticStreamValues linkStream = new StaticStreamValues() { TypeId = "__Link", Values = list2 };
+            client.SendValuesAsync2(new StaticStreamValues[] { staticStream, linkStream }).Wait();
+
+OSIsoft Cloud Service (OCS) Example
 ------------------------
-There are some practices to consider when using the ``IngressClient`` to attain the highest possible throughput.  The first is batch sending data.  All ``IngressClient`` methods accept collections.  By adding multiple objects into those collections, you allow the client to send them all at once which reduces the number of round trips to the service.  This is especially important for sending values, were you may want to send hundreds or even thousands of messages per second.  
-
-One caveat to sending batches is that we're limited to 256kb per batch sent.  Since the ``IngressClient`` serializes data into JSON before sending to the service, the size of your batched data may be larger than anticipated and sends may fail.  If this happens, the size of the batches sent must be reduced.
-
-Another way to increase throughput is by sending data asynchronously.  Because types must be sent before containers, and containers must be sent before values, the ``CreateTypes`` and ``CreateContainers`` methods are synchronous.  However, the ``SendValuesAsync`` method is asynchronous, allowing multiple values collections to be sent simultaneously. This removes the need to wait for the service to return before sending the next batch of values.  This is especially important to prevent throughput problems with high latency connections to the service.
-
-Finally, the ``IngressClient`` can compress the data sent to the service if you set ``IngressClient.UseCompression = true``.  For small amounts of data this probably won't help, but for larger batches of data sent over a low bandwidth connection, this can significantly improve throughput.  Using compression can also allow batches of data to be sent that would otherwise exceed the 256kb size limit.
+This example was extended from the existing example for OCS that can found at https://github.com/osisoft/OMF-Samples
