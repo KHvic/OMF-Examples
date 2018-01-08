@@ -18,6 +18,7 @@
 
 # How to convert a class object to JSON
 ::
+    
     //Object to JSON Converter
 		com.fasterxml.jackson.databind.ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
     
@@ -27,12 +28,13 @@
 # How to send a post request
 A function using Apache HttpClient has been defined to send http post request easily. To send a post request, use the SendRequest function as follows
 ::
-  //httppost is a pre-defined object based on the library defined 'HttpPost' class
-  StringEntity  new StringEntity(msg);
-  httppost.setEntity(entity);
+  	
+	//httppost is a pre-defined object based on the library defined 'HttpPost' class
+  	StringEntity  new StringEntity(msg);
+  	httppost.setEntity(entity);
   
-  //set the corresponding header for post request
-  httppost.setHeader("messagetype","data");
+ 	//set the corresponding header for post request
+  	httppost.setHeader("messagetype","data");
   
-  //This will send the post request
-  SendRequest(httppost);
+  	//This will send the post request
+  	SendRequest(httppost);
